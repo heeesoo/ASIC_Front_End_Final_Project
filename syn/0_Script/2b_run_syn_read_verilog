@@ -1,0 +1,35 @@
+## read verilog rtl files
+analyze -format verilog {\
+                                     ORCA.v \
+                                     CLOCK_GEN.v \
+                                     IOPOWER.v \
+                                     ORCA_TOP.v \
+                                     RESET_BLOCK.v \
+                                     PCI_CORE.v \
+                                     PARSER.v \
+                                     CONTEXT_MEM.v \
+                                     SDRAM_IF.v \
+                                     RISC_CORE.v \
+                                     BLENDER.v \
+                                     PCI_RFIFO.v \
+                                     PCI_WFIFO.v \
+                                     SDRAM_RFIFO.v \
+                                     SDRAM_WFIFO.v \
+                                     PCI_W_MUX.v \
+                                     SD_W_MUX.v \
+                                     CLKMUL.v \
+                                     CONTROL.v \
+                                     DATA_PATH.v \
+                                     INSTRN_LAT.v \
+                                     PRGRM_CNT_TOP.v \
+                                     REG_FILE.v \
+                                     ALU.v \
+                                     STACK_TOP.v \
+                                     STACK_FSM.v \
+                                     STACK_MEM.v \
+                                     PRGRM_CNT.v \
+                                     PRGRM_DECODE.v \
+                                     PRGRM_FSM.v
+	}
+elaborate ORCA
+current_design ORCA

@@ -1,0 +1,5 @@
+source -echo -verbose 1_Input/Constraint/fir_filter.con
+
+#set_dont_use [get_lib_cells */LATCH*]
+set_dont_use [get_lib_cells */LAS*]
+set_dont_use [get_lib_cells */LAR*]

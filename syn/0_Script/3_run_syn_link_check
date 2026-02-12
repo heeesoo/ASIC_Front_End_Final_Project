@@ -1,0 +1,12 @@
+# link design
+current_design fir_filter
+link
+
+# check design
+check_design ./4_Report/fir_filter.chk_design.rpt
+
+# write ddc
+write_file -f ddc -hier -output 2_Output/unmapped/fir_filter.ddc
+
+# wrtie verilog netlist
+write -f verilog -hier -output ./2_Output/unmapped/fir_filter.v

@@ -1,0 +1,6 @@
+## read verilig rtl files
+read_verilog {\						
+                                     ../rtl/fir_filter.v \
+	}
+
+current_design fir_filter

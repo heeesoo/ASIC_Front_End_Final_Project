@@ -1,0 +1,14 @@
+## write ddc and gate verilog netlist, etc.
+change_names -rules verilog -hierarchy
+
+# write ddc
+write -format ddc -hier -o ./2_Output/mapped/fir_filter.ddc
+
+# wrtie verilog netlist
+write -f verilog -h -o ./2_Output/mapped/fir_filter.v
+
+# write SDC
+write_sdc ./2_Output/mapped/fir_filter.sdc
+
+# write SDF
+write_sdf ./2_Output/mapped/fir_filter.pre.sdf

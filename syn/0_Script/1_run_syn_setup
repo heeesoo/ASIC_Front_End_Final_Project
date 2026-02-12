@@ -1,0 +1,2 @@
+## .synopsys_dc.setup file
+source -e -v ./.synopsys_dc.setup

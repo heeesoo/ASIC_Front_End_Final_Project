@@ -1,0 +1,18 @@
+## reports for deisgn and timing, etc.
+report_clocks -attributes -skew             		> ./4_Report/clocks.rpt
+report_qor    						> ./4_Report/qor.rpt
+report_hierarchy   					> ./4_Report/hierarchy.rpt
+report_area -hierarchy					> ./4_Report/area.rpt
+report_cell				 		> ./4_Report/cell.rpt
+report_timing -max 32 -nets -nosplit		 	> ./4_Report/timing.rpt
+report_constraint -all_violators -nosplit   		> ./4_Report/constraint.rpt
+report_constraint -all_violators -nosplit -verbose  	> ./4_Report/constraint_ver.rpt
+report_clock_gating -structure				> ./4_Report/clock_gating.rpt
+report_clock_gating_check      				> ./4_Report/clock_gating_check.rpt
+report_interclock_relation     				> ./4_Report/interclock_relation.rpt
+report_reference -nosplit    				> ./4_Report/reference.rpt
+report_net -nosplit     				> ./4_Report/net.rpt
+report_disable_timing -nosplit    			> ./4_Report/disable_timing.rpt
+report_resources -nosplit     				> ./4_Report/resource.rpt
+report_port -nosplit -verbose    			> ./4_Report/port.rpt
+report_compile_options   				> ./4_Report/compile_option.rpt

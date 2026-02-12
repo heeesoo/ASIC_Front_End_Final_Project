@@ -1,0 +1,45 @@
+
+# Declares three-state nets as Verilog wire instead of tri
+set verilogout_no_tri true
+
+# Make all reset signals ideal
+set_ideal_network -no_propagate [get_nets I_ORCA_TOP/pci_rst_n]
+set_ideal_network -no_propagate [get_nets I_ORCA_TOP/sdram_rst_n]
+set_ideal_network -no_propagate [get_nets I_ORCA_TOP/sys_rst_n]
+set_ideal_network -no_propagate [get_nets I_ORCA_TOP/sys_2x_rst_n]
+
+# STA will not see the port cap
+set_ideal_network [get_pins I_CLK_SOURCE*/Y]
+set_ideal_network [get_pins I_ORCA_TOP/I_SDRAM_IF/*sd_mux*/Y]
+
+# Don't touch
+set_dont_touch [get_cells *_iopad*]
+set_dont_touch [get_cells I_CLK_SOURCE*]
+set_dont_touch [get_cells I_ORCA_TOP/I_SDRAM_IF/*sd_mux*]
+
+
+
+# Ensure that the reg-reg paths get optimized
+group_path -name INS -from [all_inputs]
+group_path -name OUTS -to [all_outputs]
+
+# Prevent DC from writing out assign or tran statements in final verilog netlist.
+set_fix_multiple_port_nets -all -buffer_constants [get_designs *]
+
+# disable drc nets of clock, constant, scan clock, scan enable 
+set_auto_disable_drc_nets -all
+
+# define clock gating style
+set_clock_gating_style -control_signal scan_enable -num_stage 2 -control_point before \
+-max_fanout 16 -positive_edge_logic [list integrated:CGLPPRX8_RVT]
+
+#set_clock_gating_style -num_stage 2 -control_point before \
+#-max_fanout 16 -positive_edge_logic [list integrated:CGLPPRX8_RVT]
+
+# compile *Scan FF*
+# compile -scan -gate_clock
+
+# In incremental compile to improve results
+set_critical_range 2.0 [current_design]
+
+# compile -scan -gate_clock -incremental
