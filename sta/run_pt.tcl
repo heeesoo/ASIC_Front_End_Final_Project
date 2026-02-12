@@ -1,0 +1,1 @@
+pt_shell -f pt.tcl | tee -i 3_Log/pt.log

@@ -1,0 +1,13 @@
+#!/bin/csh -f
+
+#version setting
+setenv ver 03_1211
+setenv fm_ver ${ver}_r2n
+
+source setup.sh
+
+if (! -e 2_Output/$fm_ver) mkdir 2_Output/$fm_ver
+if (! -e 3_Log/$fm_ver) mkdir 3_Log/$fm_ver
+if (! -e 4_Report/$fm_ver) mkdir 4_Report/$fm_ver
+
+fm_shell -64  -f 0_Script/main_r2n.tcl     | tee -i 3_Log/${fm_ver}/formality.log

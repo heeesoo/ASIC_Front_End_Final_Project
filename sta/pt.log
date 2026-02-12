@@ -1,0 +1,36 @@
+source ./common_setup.tcl
+VDD
+VDD
+source ./pt_setup.tcl
+var_Day1.tcl mydesign_pt_constraints.tcl
+var_Day1.tcl mydesign_pt_constraints.tcl
+set_app_var sh_source_uses_search_path true
+true
+set_app_var search_path " $search_path"
+ . ../syn/design_data ../syn/libs ../syn/scripts ../syn/tcl_procs ./pt_scripts  . ../syn/design_data ../syn/libs ../syn/scripts ../syn/tcl_procs ./pt_scripts 
+set_app_var link_path "* $link_path"
+* * /tools/dk/SAED_EDK90nm/Digital_Standard_cell_Library/synopsys/models/saed90nm_max.db 
+read_verilog $NETLIST_FILES
+1
+current_design $DESIGN_NAME
+Loading verilog file '/home1/std251_17/2025_asic_frontend/lab13/mydesign/syn/2_Output/mapped/mydesign.v'
+Warning: Design 'mydesign' (file '/home1/std251_17/2025_asic_frontend/lab13/mydesign/syn/2_Output/mapped/mydesign.v') is already registered. Remove the design before rereading. (DBR-003)
+{"mydesign"}
+link_design -verbose
+Error: Design is already linked. (DES-067)
+0
+read_parasitics $PARASITIC_FILES
+Error: Cannot open file 'mydesign.SPEF.gz'. (PARA-001)
+0
+if {[file extension $constraint_file] eq "../syn/2_Output/mapped/mydesign.sdc"} {
+    read_sdc -echo $constraint_file }
+Error: can't read "constraint_file": no such variable
+	Use error_info for more info. (CMD-013)
+Information: script '/home1/std251_17/2025_asic_frontend/lab13/mydesign/sta/pt.tcl'
+	stopped at line 14 due to error. (CMD-081)
+Extended error info:
+can't read "constraint_file": no such variable
+    while executing
+"file extension $constraint_file"
+    (file "/home1/std251_17/2025_asic_frontend/lab13/mydesign/sta/pt.tcl" line 14)
+ -- End Extended Error Info
